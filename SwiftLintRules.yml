@@ -1,0 +1,78 @@
+disabled_rules:
+  - identifier_name
+  - line_length
+  - nesting
+  - cyclomatic_complexity
+  - todo
+  - type_body_length
+  - block_based_kvo
+  - force_cast
+  - force_try
+  - trailing_whitespace
+  - trailing_newline
+
+large_tuple:
+  warning: 5
+
+file_length:
+  warning: 600
+
+function_body_length: 
+  warning: 50
+
+function_parameter_count: 
+  warning: 5
+
+weak_delegate: 
+  severity: error
+
+
+# Custom rules
+
+custom_rules:
+  final_class:
+    included: ".*.swift"
+    name: "Final class requrement"
+    regex: '^class'
+    message: "All classes must be final or nonfinal"
+    severity: warning
+
+  foundation_using:
+    included: ".*.swift"
+    regex: '^import Foundation'
+    message: "Do you really need for Foundation?"
+    severity: warning
+
+  print_using:
+    regex: 'print'
+    message: "Print decrease performance of the app"
+    severity: error
+
+  class_protocol:
+    regex: ': class'
+    message: "Use Anyobject instead"
+    severity: warning
+
+  mark_newlines:
+    included: ".*.swift"
+    name: “MARK newlines surrounding”
+    regex: '(([}{)\w \t]+\n{1}[ \t]*)(\/\/ MARK: - [\w ]*))|((\/\/ MARK: - [\w ]*)(\n{1}[ \t]*\w+))'
+    message: "Every MARK should be surrounded with 1 newline before and 1 after it"
+    severity: warning
+
+  vertical_whitespace_opening_braces:
+    included: ".*.swift"
+    regex: '\}[^\n]*\n[^\n]*func '
+    name: "Vertical Whitespace for function"
+    message: "Functions should start with newline"
+    severity: warning
+
+  vertical_whitespace_closing_braces:
+    included: ".*.swift"
+    regex: '\n[ \t]*\n[ \t]*[)}\]]'
+    name: "Vertical Whitespace before Closing Braces"
+    message: "Don't include vertical whitespace (empty line) before closing braces."
+    severity: warning
+
+excluded:
+  - Pods
