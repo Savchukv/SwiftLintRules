@@ -44,8 +44,8 @@ custom_rules:
     severity: warning
 
   print_using:
-    regex: 'print'
-    message: "Print decrease performance of the app"
+    regex: "((\\bprint)|(Swift\\.print))\\s*\\("
+    message: "Print decrease performance of the app, use debugPrint with #if DEBUG"
     severity: error
 
   class_protocol:
